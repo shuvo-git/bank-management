@@ -1,13 +1,11 @@
-package com.jobayed.accountservice;
+package com.jobayed.customerservice;
 
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class AccountServiceApplicationTests {
+class CustomerServiceApplicationTests {
 
-	@Disabled
 	@Test
 	void contextLoads() {
 	}
