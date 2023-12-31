@@ -1,11 +1,11 @@
 package com.jobayed.accountservice.ep;
 
-import com.jobayed.accountservice.ep.model.request.AccountCreateRequest;
-import com.jobayed.accountservice.ep.model.response.AccountCreateResponse;
 import com.jobayed.accountservice.service.AccountService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @Slf4j
@@ -18,10 +18,5 @@ public class AccountController {
     @GetMapping
     public String getHello() {
         return "Hello, welcome ";
-    }
-
-    @PostMapping
-    public AccountCreateResponse createAccount(@RequestBody AccountCreateRequest accountCreateRequest) {
-        return accountService.createAccount(accountCreateRequest);
     }
 }

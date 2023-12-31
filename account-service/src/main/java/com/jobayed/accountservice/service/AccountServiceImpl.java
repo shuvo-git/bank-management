@@ -3,7 +3,6 @@ package com.jobayed.accountservice.service;
 import com.jobayed.accountservice.domain.AccountEntity;
 import com.jobayed.accountservice.enums.YNEnum;
 import com.jobayed.accountservice.ep.model.request.AccountCreateRequest;
-import com.jobayed.accountservice.ep.model.response.AccountCreateResponse;
 import com.jobayed.accountservice.repository.AccountRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -19,10 +18,10 @@ public class AccountServiceImpl implements AccountService {
 
     @Override
     @Transactional
-    @KafkaListener(groupId = "Ac", topics = "test")
-    public AccountCreateResponse createAccount(AccountCreateRequest request) {
+    @KafkaListener(groupId = "testGroup", topics = "test")
+    public void createAccount(AccountCreateRequest request) {
         log.info("Received {}", request);
-        if(request != null) {
+        if (request != null) {
             AccountEntity entity = AccountEntity.builder()
                     .name(request.getName())
                     .phoneNumber(request.getPhoneNumber())
@@ -31,9 +30,5 @@ public class AccountServiceImpl implements AccountService {
                     .build();
             accountRepository.save(entity);
         }
-        return AccountCreateResponse.builder()
-                .errorCode("000_000")
-                .message("Account successfully created!!")
-                .build();
     }
 }
